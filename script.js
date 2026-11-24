@@ -6,6 +6,38 @@ const cartItems = document.getElementById("cartItems");
 const cartCount = document.getElementById("cartCount");
 const cartTotal = document.getElementById("cartTotal");
 const toast = document.getElementById("toast");
+const whatsappNumber = document.body.dataset.whatsappNumber;
+const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+  window.setTimeout(() => toast.classList.remove("show"), 1800);
+}
+
+function addToCart(name, price) {
+  if (!name || !Number.isFinite(price) || price <= 0) {
+    showToast("Não foi possível adicionar esse item");
+    return;
+  }
+
+  const existing = cart.find((item) => item.name === name);
+  if (existing) existing.quantity += 1;
+  else cart.push({ name, price, quantity: 1 });
+
+  renderCart();
+  showToast(`${name} adicionado ao carrinho`);
+}
+
+function escapeHtml(value) {
+  return value.replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character]);
+}
 
 function openCart() {
   cartDrawer.classList.add("open");
@@ -25,7 +57,7 @@ function renderCart() {
   } else {
     cartItems.innerHTML = cart.map((item, index) => `
       <div class="cart-item">
-        <div><strong>${item.name}</strong><small>${item.quantity} × R$ ${item.price.toFixed(2).replace(".", ",")}</small></div>
+        <div><strong>${escapeHtml(item.name)}</strong><small>${item.quantity} × ${currency.format(item.price)}</small></div>
         <div class="cart-item-controls">
           <button type="button" data-action="minus" data-index="${index}" aria-label="Diminuir quantidade">−</button>
           <span>${item.quantity}</span>
@@ -38,23 +70,13 @@ function renderCart() {
   const quantity = cart.reduce((sum, item) => sum + item.quantity, 0);
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   cartCount.textContent = quantity;
-  cartTotal.textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
+  cartTotal.textContent = currency.format(total);
 }
 
-document.querySelectorAll(".add-button").forEach((button) => {
-  button.addEventListener("click", () => {
-    const name = button.dataset.name;
-    const price = Number(button.dataset.price);
-    const existing = cart.find((item) => item.name === name);
-
-    if (existing) existing.quantity += 1;
-    else cart.push({ name, price, quantity: 1 });
-
-    renderCart();
-    toast.textContent = `${name} adicionado ao carrinho`;
-    toast.classList.add("show");
-    window.setTimeout(() => toast.classList.remove("show"), 1800);
-  });
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-add-name][data-add-price]");
+  if (!button) return;
+  addToCart(button.dataset.addName, Number(button.dataset.addPrice));
 });
 
 cartItems.addEventListener("click", (event) => {
@@ -73,29 +95,36 @@ cartItems.addEventListener("click", (event) => {
 document.getElementById("cartButton").addEventListener("click", openCart);
 document.getElementById("cartClose").addEventListener("click", closeCart);
 cartOverlay.addEventListener("click", closeCart);
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeCart();
+});
 
 document.getElementById("checkoutButton").addEventListener("click", () => {
   if (!cart.length) {
-    toast.textContent = "Adicione um item antes de finalizar";
-    toast.classList.add("show");
-    window.setTimeout(() => toast.classList.remove("show"), 1800);
+    showToast("Adicione um item antes de finalizar");
     return;
   }
 
   const lines = cart.map((item) => `${item.quantity}x ${item.name}`);
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const message = `Olá! Quero fazer um pedido no Comilão:\n${lines.join("\n")}\nTotal: R$ ${total.toFixed(2).replace(".", ",")}`;
-  window.open(`https://wa.me/5511999999999?text=${encodeURIComponent(message)}`, "_blank");
+  const message = `Olá! Este é um pedido de demonstração do site fictício Comilão:\n${lines.join("\n")}\nTotal: ${currency.format(total)}`;
+  window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
 });
 
 document.querySelectorAll(".filter").forEach((filter) => {
   filter.addEventListener("click", () => {
     document.querySelectorAll(".filter").forEach((item) => item.classList.remove("active"));
+    document.querySelectorAll(".filter").forEach((item) => item.setAttribute("aria-pressed", "false"));
     filter.classList.add("active");
+    filter.setAttribute("aria-pressed", "true");
     const category = filter.dataset.filter;
 
     document.querySelectorAll(".product-card").forEach((card) => {
       card.classList.toggle("hidden", category !== "todos" && card.dataset.category !== category);
+    });
+
+    document.querySelectorAll("[data-whatsapp-link]").forEach((link) => {
+      link.href = `https://wa.me/${whatsappNumber}`;
     });
   });
 });

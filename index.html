@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Comilão - Os melhores burgers, porções e bebidas da cidade.">
-  <title>Comilão | Hambúrguer artesanal</title>
+  <meta name="description" content="Peça hambúrgueres, porções e combos do Comilão em Braço do Norte. Atendimento todos os dias, das 17h às 23h.">
+  <meta name="theme-color" content="#ed1c24">
+  <title>Comilão | Lanches em Braço do Norte</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-whatsapp-number="5548998453836">
   <header class="header" id="top">
     <div class="container nav-wrap">
       <a class="brand" href="#top" aria-label="Comilão, início">
@@ -26,7 +27,7 @@
         <button class="cart-button" id="cartButton" type="button" aria-label="Abrir carrinho">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 7H6M9 20h.01M18 20h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span>Carrinho</span>
-          <b id="cartCount">0</b>
+          <b id="cartCount" aria-live="polite">0</b>
         </button>
         <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="nav">
           <span></span><span></span><span></span>
@@ -35,14 +36,16 @@
     </div>
   </header>
 
+  <div class="demo-notice" role="note">Site demonstrativo: cardápio, preços e promoções são fictícios.</div>
+
   <main>
     <section class="hero">
       <div class="hero-noise"></div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> Aberto todos os dias</p>
+          <p class="eyebrow"><span></span> Segunda a domingo · 17h às 23h</p>
           <h1>FOME<br><em>É PROBLEMA</em><br>DAQUI!</h1>
-          <p class="hero-text">Hambúrguer artesanal, ingredientes frescos e porções generosas para matar a sua fome de verdade.</p>
+          <p class="hero-text">Burgers caprichados, porções para compartilhar e aquele combo que transforma qualquer noite em sexta-feira.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#cardapio">Ver cardápio <span>→</span></a>
             <a class="button button-outline" href="#promocoes">Ver promoções</a>
@@ -51,17 +54,17 @@
         <div class="hero-art">
           <div class="burst"></div>
           <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=90" alt="Hambúrguer artesanal Comilão">
-          <div class="price-tag"><small>A partir de</small><strong>R$ 24</strong></div>
+          <div class="price-tag"><small>Burgers a partir de</small><strong>R$ 24,90</strong></div>
         </div>
       </div>
     </section>
 
     <section class="trust-bar" aria-label="Informações do serviço">
       <div class="container trust-grid">
-        <div><strong>30 MIN</strong><span>Entrega rápida</span></div>
-        <div><strong>100%</strong><span>Ingredientes frescos</span></div>
-        <div><strong>4.9 ★</strong><span>Avaliação dos clientes</span></div>
-        <div><strong>TODO DIA</strong><span>Das 18h às 23h</span></div>
+        <div><strong>TODO DIA</strong><span>Segunda a domingo</span></div>
+        <div><strong>17H–23H</strong><span>Horário de atendimento</span></div>
+        <div><strong>NO ZAP</strong><span>Peça pelo WhatsApp</span></div>
+        <div><strong>BRAÇO DO NORTE</strong><span>Floresta · Santa Catarina</span></div>
       </div>
     </section>
 
@@ -72,76 +75,71 @@
             <p class="eyebrow dark"><span></span> Escolha sua fome</p>
             <h2>Nosso cardápio</h2>
           </div>
-          <div class="filters" role="tablist" aria-label="Categorias do cardápio">
-            <button class="filter active" type="button" data-filter="todos">Todos</button>
-            <button class="filter" type="button" data-filter="burger">Burgers</button>
-            <button class="filter" type="button" data-filter="porcao">Porções</button>
-            <button class="filter" type="button" data-filter="bebida">Bebidas</button>
+          <div class="filters" aria-label="Categorias do cardápio">
+            <button class="filter active" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+            <button class="filter" type="button" data-filter="burger" aria-pressed="false">Burgers</button>
+            <button class="filter" type="button" data-filter="porcao" aria-pressed="false">Porções</button>
+            <button class="filter" type="button" data-filter="bebida" aria-pressed="false">Bebidas</button>
+            <button class="filter" type="button" data-filter="sobremesa" aria-pressed="false">Sobremesas</button>
           </div>
         </div>
 
         <div class="product-grid">
           <article class="product-card" data-category="burger">
-            <div class="product-image">
-              <span class="badge">Mais pedido</span>
-              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=85" alt="Cheeseburger Duplo">
-            </div>
-            <div class="product-info">
-              <h3>Duplo Comilão</h3>
-              <p>Duplo smash, cheddar, bacon crocante e molho da casa.</p>
-              <div class="product-bottom"><strong>R$ 32,90</strong><button class="add-button" type="button" data-name="Duplo Comilão" data-price="32.90" aria-label="Adicionar Duplo Comilão">+</button></div>
-            </div>
+            <div class="product-image"><span class="badge">Clássico</span><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=85" alt="Hambúrguer clássico com queijo, alface e tomate" loading="lazy"></div>
+            <div class="product-info"><h3>Comilão Clássico</h3><p>Hambúrguer 150 g, queijo, alface, tomate e molho especial.</p><div class="product-bottom"><strong>R$ 25,90</strong><button class="add-button" type="button" data-add-name="Comilão Clássico" data-add-price="25.90" aria-label="Adicionar Comilão Clássico ao pedido">+</button></div></div>
           </article>
           <article class="product-card" data-category="burger">
-            <div class="product-image">
-              <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=700&q=85" alt="Hambúrguer X-Bacon">
-            </div>
-            <div class="product-info">
-              <h3>X-Bacon Supremo</h3>
-              <p>Blend bovino, muito bacon, queijo e cebola caramelizada.</p>
-              <div class="product-bottom"><strong>R$ 29,90</strong><button class="add-button" type="button" data-name="X-Bacon Supremo" data-price="29.90" aria-label="Adicionar X-Bacon Supremo">+</button></div>
-            </div>
+            <div class="product-image"><span class="badge">Mais pedido</span><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=85" alt="Hambúrguer duplo com queijo" loading="lazy"></div>
+            <div class="product-info"><h3>Duplo Comilão</h3><p>Dois hambúrgueres, cheddar cremoso, cebola e molho da casa.</p><div class="product-bottom"><strong>R$ 32,90</strong><button class="add-button" type="button" data-add-name="Duplo Comilão" data-add-price="32.90" aria-label="Adicionar Duplo Comilão ao pedido">+</button></div></div>
           </article>
           <article class="product-card" data-category="burger">
-            <div class="product-image">
-              <span class="badge green">Novidade</span>
-              <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=700&q=85" alt="Hambúrguer Smash">
-            </div>
-            <div class="product-info">
-              <h3>Smash Cheese</h3>
-              <p>Smash 100g, dupla camada de cheddar e picles crocante.</p>
-              <div class="product-bottom"><strong>R$ 24,90</strong><button class="add-button" type="button" data-name="Smash Cheese" data-price="24.90" aria-label="Adicionar Smash Cheese">+</button></div>
-            </div>
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=700&q=85" alt="Hambúrguer com bacon crocante" loading="lazy"></div>
+            <div class="product-info"><h3>X-Bacon Supremo</h3><p>Hambúrguer 150 g, bacon crocante, queijo e barbecue.</p><div class="product-bottom"><strong>R$ 31,90</strong><button class="add-button" type="button" data-add-name="X-Bacon Supremo" data-add-price="31.90" aria-label="Adicionar X-Bacon Supremo ao pedido">+</button></div></div>
+          </article>
+          <article class="product-card" data-category="burger">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=700&q=85" alt="Hambúrguer smash com queijo" loading="lazy"></div>
+            <div class="product-info"><h3>Smash Cheese</h3><p>Smash 100 g, queijo duplo, picles e molho especial.</p><div class="product-bottom"><strong>R$ 24,90</strong><button class="add-button" type="button" data-add-name="Smash Cheese" data-add-price="24.90" aria-label="Adicionar Smash Cheese ao pedido">+</button></div></div>
+          </article>
+          <article class="product-card" data-category="burger">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=700&q=85" alt="Sanduíche de frango crocante" loading="lazy"></div>
+            <div class="product-info"><h3>Frango Crocante</h3><p>Frango empanado, queijo, alface e maionese temperada.</p><div class="product-bottom"><strong>R$ 27,90</strong><button class="add-button" type="button" data-add-name="Frango Crocante" data-add-price="27.90" aria-label="Adicionar Frango Crocante ao pedido">+</button></div></div>
+          </article>
+          <article class="product-card" data-category="burger">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=700&q=85" alt="Hambúrguer vegetariano com vegetais" loading="lazy"></div>
+            <div class="product-info"><h3>Veggie da Casa</h3><p>Disco de grão-de-bico, queijo, rúcula e molho de ervas.</p><div class="product-bottom"><strong>R$ 28,90</strong><button class="add-button" type="button" data-add-name="Veggie da Casa" data-add-price="28.90" aria-label="Adicionar Veggie da Casa ao pedido">+</button></div></div>
           </article>
           <article class="product-card" data-category="porcao">
-            <div class="product-image">
-              <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=85" alt="Porção de batatas fritas">
-            </div>
-            <div class="product-info">
-              <h3>Batata da Casa</h3>
-              <p>Batata crocante, cheddar cremoso e bacon em tiras.</p>
-              <div class="product-bottom"><strong>R$ 21,90</strong><button class="add-button" type="button" data-name="Batata da Casa" data-price="21.90" aria-label="Adicionar Batata da Casa">+</button></div>
-            </div>
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=85" alt="Porção de batatas fritas" loading="lazy"></div>
+            <div class="product-info"><h3>Batata Frita</h3><p>Porção de batatas douradas e crocantes.</p><div class="product-bottom"><strong>R$ 14,90</strong><button class="add-button" type="button" data-add-name="Batata Frita" data-add-price="14.90" aria-label="Adicionar Batata Frita ao pedido">+</button></div></div>
           </article>
           <article class="product-card" data-category="porcao">
-            <div class="product-image">
-              <img src="https://images.unsplash.com/photo-1625938145744-e380515399bf?auto=format&fit=crop&w=700&q=85" alt="Anéis de cebola">
-            </div>
-            <div class="product-info">
-              <h3>Anéis Crocantes</h3>
-              <p>Porção generosa de onion rings com molho barbecue.</p>
-              <div class="product-bottom"><strong>R$ 18,90</strong><button class="add-button" type="button" data-name="Anéis Crocantes" data-price="18.90" aria-label="Adicionar Anéis Crocantes">+</button></div>
-            </div>
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=700&q=85" alt="Batatas fritas com queijo e bacon" loading="lazy"></div>
+            <div class="product-info"><h3>Batata Cheddar & Bacon</h3><p>Batata crocante, cheddar cremoso e bacon em cubinhos.</p><div class="product-bottom"><strong>R$ 23,90</strong><button class="add-button" type="button" data-add-name="Batata Cheddar e Bacon" data-add-price="23.90" aria-label="Adicionar Batata Cheddar e Bacon ao pedido">+</button></div></div>
+          </article>
+          <article class="product-card" data-category="porcao">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=700&q=85" alt="Anéis de cebola empanados" loading="lazy"></div>
+            <div class="product-info"><h3>Anéis Crocantes</h3><p>Anéis de cebola empanados, servidos com molho barbecue.</p><div class="product-bottom"><strong>R$ 18,90</strong><button class="add-button" type="button" data-add-name="Anéis Crocantes" data-add-price="18.90" aria-label="Adicionar Anéis Crocantes ao pedido">+</button></div></div>
+          </article>
+          <article class="product-card" data-category="porcao">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=85" alt="Tiras de frango empanadas" loading="lazy"></div>
+            <div class="product-info"><h3>Chicken Bites</h3><p>Pedacinhos de frango empanados com molho especial.</p><div class="product-bottom"><strong>R$ 21,90</strong><button class="add-button" type="button" data-add-name="Chicken Bites" data-add-price="21.90" aria-label="Adicionar Chicken Bites ao pedido">+</button></div></div>
           </article>
           <article class="product-card" data-category="bebida">
-            <div class="product-image">
-              <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=700&q=85" alt="Milk shake">
-            </div>
-            <div class="product-info">
-              <h3>Milk Shake</h3>
-              <p>Cremoso, gelado e disponível nos sabores chocolate ou morango.</p>
-              <div class="product-bottom"><strong>R$ 14,90</strong><button class="add-button" type="button" data-name="Milk Shake" data-price="14.90" aria-label="Adicionar Milk Shake">+</button></div>
-            </div>
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?auto=format&fit=crop&w=700&q=85" alt="Refrigerante gelado" loading="lazy"></div>
+            <div class="product-info"><h3>Refrigerante Lata</h3><p>350 ml. Escolha entre cola, guaraná ou laranja.</p><div class="product-bottom"><strong>R$ 6,00</strong><button class="add-button" type="button" data-add-name="Refrigerante Lata" data-add-price="6.00" aria-label="Adicionar Refrigerante Lata ao pedido">+</button></div></div>
+          </article>
+          <article class="product-card" data-category="bebida">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=700&q=85" alt="Bebida gelada com limão" loading="lazy"></div>
+            <div class="product-info"><h3>Limonada da Casa</h3><p>Limonada gelada, preparada na hora.</p><div class="product-bottom"><strong>R$ 9,90</strong><button class="add-button" type="button" data-add-name="Limonada da Casa" data-add-price="9.90" aria-label="Adicionar Limonada da Casa ao pedido">+</button></div></div>
+          </article>
+          <article class="product-card" data-category="bebida">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=85" alt="Milk-shake cremoso" loading="lazy"></div>
+            <div class="product-info"><h3>Milk-shake</h3><p>400 ml, bem cremoso. Chocolate ou morango.</p><div class="product-bottom"><strong>R$ 17,90</strong><button class="add-button" type="button" data-add-name="Milk-shake" data-add-price="17.90" aria-label="Adicionar Milk-shake ao pedido">+</button></div></div>
+          </article>
+          <article class="product-card" data-category="sobremesa">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=85" alt="Brownie de chocolate" loading="lazy"></div>
+            <div class="product-info"><h3>Brownie de Chocolate</h3><p>Brownie quentinho com calda de chocolate.</p><div class="product-bottom"><strong>R$ 15,90</strong><button class="add-button" type="button" data-add-name="Brownie de Chocolate" data-add-price="15.90" aria-label="Adicionar Brownie de Chocolate ao pedido">+</button></div></div>
           </article>
         </div>
       </div>
@@ -151,18 +149,13 @@
       <div class="container promo-grid">
         <div class="promo-card promo-main">
           <div class="promo-copy">
-            <p>COMBO DA SEMANA</p>
-            <h2>HAMBÚRGUER<br>+ BATATA</h2>
-            <strong>por R$ 39,90</strong>
-            <a class="button button-dark" href="#cardapio">Quero esse combo</a>
+            <p>TODA SEXTA-FEIRA</p>
+            <h2>COMBO<br>SEXTOU!</h2>
+            <strong>Duplo + batata + refri por R$ 44,90</strong>
+            <button class="button button-dark promo-add" type="button" data-add-name="Combo Sextou (Duplo, batata e refri)" data-add-price="44.90">Adicionar ao pedido <span>→</span></button>
+            <small>Promoção demonstrativa. Consulte disponibilidade.</small>
           </div>
-          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=90" alt="Combo de hambúrguer e batata">
-        </div>
-        <div class="promo-card promo-side">
-          <p>SEGUNDA-FEIRA</p>
-          <h3>DUAS PROMOS<br>NO MESMO DIA</h3>
-          <strong>Leve 2, pague 1</strong>
-          <span>Em todos os Smash Cheese</span>
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=90" alt="Combo de hambúrguer e batata" loading="lazy">
         </div>
       </div>
     </section>
@@ -170,15 +163,15 @@
     <section class="about-section" id="sobre">
       <div class="container about-grid">
         <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85" alt="Preparação artesanal na cozinha do Comilão">
-          <div class="about-stamp">Desde<br><strong>2018</strong></div>
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85" alt="Hambúrguer artesanal preparado para servir" loading="lazy">
+          <div class="about-stamp">Feito<br><strong>na hora</strong></div>
         </div>
         <div class="about-copy">
           <p class="eyebrow dark"><span></span> Nossa história</p>
-          <h2>FOME GIGANTE.<br>RECEITA AUTÊNTICA.</h2>
-          <p>O Comilão nasceu da vontade de fazer hambúrguer do jeito certo: carne de qualidade, pão macio, molhos marcantes e porções que não deixam ninguém com vontade.</p>
-          <p>Somos uma cozinha de bairro com alma de chef — feita para reunir amigos, matar a fome e repetir no dia seguinte.</p>
-          <a class="text-link" href="#contato">Conheça a gente <span>→</span></a>
+          <h2>SEU LANCHE.<br>SUA FOME. SEU JEITO.</h2>
+          <p>O Comilão é uma lanchonete fictícia criada para apresentar um cardápio caprichado, combos divertidos e um jeito simples de montar seu pedido.</p>
+          <p>Escolha seus favoritos, confira o total no carrinho e envie o pedido pelo WhatsApp. Simples assim.</p>
+          <a class="text-link" href="#cardapio">Explore o cardápio <span>→</span></a>
         </div>
       </div>
     </section>
@@ -190,8 +183,8 @@
           <h2>VAI FICAR COM ESSA<br>FOME OU VAI PEDIR?</h2>
         </div>
         <div class="cta-actions">
-          <a class="button button-primary" href="https://wa.me/5511999999999" target="_blank" rel="noopener">Peça pelo WhatsApp <span>→</span></a>
-          <p>Rua das Delícias, 123 — Centro<br>Seg. a dom., das 18h às 23h</p>
+          <a class="button button-primary" href="https://wa.me/5548998453836" data-whatsapp-link target="_blank" rel="noopener">Peça pelo WhatsApp <span>→</span></a>
+          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Irineu+Bornhausen%2C+2774%2C+Floresta%2C+Bra%C3%A7o+do+Norte+-+SC" target="_blank" rel="noopener">Rua Irineu Bornhausen, 2774 — Floresta<br>Braço do Norte — SC</a><br>Todos os dias, das 17h às 23h<br>(48) 99845-3836</p>
         </div>
       </div>
     </section>
@@ -201,7 +194,7 @@
     <div class="container footer-grid">
       <a class="brand" href="#top"><span class="brand-mark"><span>COMI</span><strong>LÃO</strong></span></a>
       <p>© 2026 Comilão. Todos os direitos reservados.</p>
-      <div class="socials"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="Facebook">FB</a></div>
+      <div class="socials" aria-label="Redes sociais demonstrativas"><span>@comilao.bn.demo</span><small>perfil fictício</small></div>
     </div>
   </footer>
 
@@ -215,7 +208,7 @@
     </div>
   </aside>
 
-  <div class="toast" id="toast">Adicionado ao carrinho</div>
+  <div class="toast" id="toast" role="status" aria-live="polite">Adicionado ao carrinho</div>
   <script src="script.js"></script>
 </body>
 </html>
